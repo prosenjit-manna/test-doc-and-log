@@ -56,5 +56,11 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
 
+
+### Export data 
 yarn strapi export --file test-case-and-log
 testpass
+
+
+### Publish publicly
+ssh -R 80:localhost:1337 localhost.run
