@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_plans",
+  "info": {
+    "singularName": "test-plan",
+    "pluralName": "test-plans",
+    "displayName": "Test Plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "descriptions": {
+      "type": "blocks"
+    },
+    "test_cases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test-case.test-case",
+      "mappedBy": "test_plans"
+    },
+    "Assignee": {
+      "type": "enumeration",
+      "enum": [
+        "Tester 1 ",
+        "Tester 2",
+        "Tester 3"
+      ]
+    }
+  }
+}

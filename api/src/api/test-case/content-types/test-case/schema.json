@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_cases",
+  "info": {
+    "singularName": "test-case",
+    "pluralName": "test-cases",
+    "displayName": "Test case",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "descriptions": {
+      "type": "richtext",
+      "required": true
+    },
+    "State": {
+      "type": "enumeration",
+      "enum": [
+        "Active ",
+        "Draft ",
+        "Retried "
+      ],
+      "required": true,
+      "default": "Draft "
+    },
+    "estimation": {
+      "type": "string",
+      "required": false
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "Expected": {
+      "type": "blocks"
+    },
+    "Attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "test_plans": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test-plan.test-plan",
+      "inversedBy": "test_cases"
+    },
+    "test_histories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::test-history.test-history",
+      "mappedBy": "test_case"
+    },
+    "app_modules": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::app-module.app-module",
+      "mappedBy": "test_cases"
+    }
+  }
+}

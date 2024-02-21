@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "app_modules",
+  "info": {
+    "singularName": "app-module",
+    "pluralName": "app-modules",
+    "displayName": "App Module",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "descriptions": {
+      "type": "richtext"
+    },
+    "test_cases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test-case.test-case",
+      "inversedBy": "app_modules"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_histories",
+  "info": {
+    "singularName": "test-history",
+    "pluralName": "test-histories",
+    "displayName": "Test History",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "test_case": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::test-case.test-case",
+      "inversedBy": "test_histories"
+    },
+    "Descriptions": {
+      "type": "richtext"
+    },
+    "test_status": {
+      "type": "enumeration",
+      "enum": [
+        "Failed",
+        "Passed"
+      ]
+    },
+    "Instances": {
+      "type": "enumeration",
+      "enum": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "required": true
+    }
+  }
+}
