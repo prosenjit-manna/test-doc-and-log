@@ -819,6 +819,37 @@ export interface ApiAppModuleAppModule extends Schema.CollectionType {
   };
 }
 
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'Projects';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    descriptions: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTestCaseTestCase extends Schema.CollectionType {
   collectionName: 'test_cases';
   info: {
@@ -966,6 +997,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::app-module.app-module': ApiAppModuleAppModule;
+      'api::project.project': ApiProjectProject;
       'api::test-case.test-case': ApiTestCaseTestCase;
       'api::test-history.test-history': ApiTestHistoryTestHistory;
       'api::test-plan.test-plan': ApiTestPlanTestPlan;
