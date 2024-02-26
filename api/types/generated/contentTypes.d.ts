@@ -737,7 +737,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -765,6 +764,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    projects: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::project.project'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -801,6 +805,11 @@ export interface ApiAppModuleAppModule extends Schema.CollectionType {
       'api::app-module.app-module',
       'manyToMany',
       'api::test-case.test-case'
+    >;
+    project: Attribute.Relation<
+      'api::app-module.app-module',
+      'oneToOne',
+      'api::project.project'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -886,6 +895,11 @@ export interface ApiTestCaseTestCase extends Schema.CollectionType {
       'manyToMany',
       'api::app-module.app-module'
     >;
+    project: Attribute.Relation<
+      'api::test-case.test-case',
+      'oneToOne',
+      'api::project.project'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -924,6 +938,11 @@ export interface ApiTestHistoryTestHistory extends Schema.CollectionType {
     test_status: Attribute.Enumeration<['Failed', 'Passed']>;
     Instances: Attribute.Enumeration<['dev', 'staging', 'prod']> &
       Attribute.Required;
+    project: Attribute.Relation<
+      'api::test-history.test-history',
+      'oneToOne',
+      'api::project.project'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -961,6 +980,11 @@ export interface ApiTestPlanTestPlan extends Schema.CollectionType {
       'api::test-case.test-case'
     >;
     Assignee: Attribute.Enumeration<['Tester 1 ', 'Tester 2', 'Tester 3']>;
+    project: Attribute.Relation<
+      'api::test-plan.test-plan',
+      'oneToOne',
+      'api::project.project'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

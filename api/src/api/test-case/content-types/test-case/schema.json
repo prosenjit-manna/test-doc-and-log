@@ -74,6 +74,11 @@
       "relation": "manyToMany",
       "target": "api::app-module.app-module",
       "mappedBy": "test_cases"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
     }
   }
 }

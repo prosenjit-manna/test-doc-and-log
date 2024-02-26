@@ -31,6 +31,11 @@
         "Tester 2",
         "Tester 3"
       ]
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
     }
   }
 }

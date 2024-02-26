@@ -23,6 +23,11 @@
       "relation": "manyToMany",
       "target": "api::test-case.test-case",
       "inversedBy": "app_modules"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
     }
   }
 }
