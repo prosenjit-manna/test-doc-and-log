@@ -767,7 +767,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     projects: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToMany',
+      'manyToMany',
       'api::project.project'
     >;
     createdAt: Attribute.DateTime;
@@ -841,6 +841,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     descriptions: Attribute.Blocks;
+    users: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
