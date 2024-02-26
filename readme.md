@@ -16,3 +16,9 @@ In this repo maintained API features. For report and more features it is maintai
   - `npm run develop` for local development 
 - Inside dashboard dir `npm i`
   - `npm run start` for local development 
+
+
+## Credentials 
+**Tester 1: **
+"identifier": "prosenjit-tester",
+"password": "8N$3GZQTGFunve$",

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_metas",
+  "info": {
+    "singularName": "user-meta",
+    "pluralName": "user-metas",
+    "displayName": "userMeta"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "user_meta"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

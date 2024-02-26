@@ -17,10 +17,10 @@
     "descriptions": {
       "type": "blocks"
     },
-    "users": {
+    "user_meta": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
+      "relation": "manyToOne",
+      "target": "api::user-meta.user-meta",
       "inversedBy": "projects"
     }
   }

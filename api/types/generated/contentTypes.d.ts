@@ -765,11 +765,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    projects: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'manyToMany',
-      'api::project.project'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -841,10 +836,10 @@ export interface ApiProjectProject extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     descriptions: Attribute.Blocks;
-    users: Attribute.Relation<
+    user_meta: Attribute.Relation<
       'api::project.project',
-      'manyToMany',
-      'plugin::users-permissions.user'
+      'manyToOne',
+      'api::user-meta.user-meta'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1007,6 +1002,41 @@ export interface ApiTestPlanTestPlan extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserMetaUserMeta extends Schema.CollectionType {
+  collectionName: 'user_metas';
+  info: {
+    singularName: 'user-meta';
+    pluralName: 'user-metas';
+    displayName: 'userMeta';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    projects: Attribute.Relation<
+      'api::user-meta.user-meta',
+      'oneToMany',
+      'api::project.project'
+    >;
+    avatar: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-meta.user-meta',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-meta.user-meta',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1030,6 +1060,7 @@ declare module '@strapi/types' {
       'api::test-case.test-case': ApiTestCaseTestCase;
       'api::test-history.test-history': ApiTestHistoryTestHistory;
       'api::test-plan.test-plan': ApiTestPlanTestPlan;
+      'api::user-meta.user-meta': ApiUserMetaUserMeta;
     }
   }
 }
