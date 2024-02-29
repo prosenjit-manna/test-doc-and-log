@@ -58,9 +58,12 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 
 
 ### Export data 
-yarn strapi export --file test-case-and-log
+npm run strapi -- export --file test-case-and-log
 testpass
 
+
+### import
+npm run strapi -- import --file test-case-and-log.tar.gz.enc --key testpass
 
 ### Publish publicly
 ssh -R 80:localhost:1337 localhost.run
